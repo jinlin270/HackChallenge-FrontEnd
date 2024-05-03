@@ -7,6 +7,11 @@
 
 import UIKit
     
+
+protocol UpdateItemDelegate: AnyObject {
+    func UpdateItem(newTitle:String, newItem:String)
+}
+
 class EditItemViewController: UIViewController {
 //    Post(id: 1,
 //         time: Date(),
@@ -30,6 +35,7 @@ class EditItemViewController: UIViewController {
   
 //    private let majorLabel = UILabel()
     private let itemTextField = UITextField()
+    private weak var delegate: UpdateItemDelegate?
 
     // MARK: - Properties (data)
 
@@ -120,7 +126,7 @@ class EditItemViewController: UIViewController {
     
     
     @objc private func saveItemButtonTapped() {
-        delegate?.updateItem(newTitle: titleLabelField.text ?? "", newItem: itemTextField.text ?? "")
+        delegate?.UpdateItem(newTitle: titleLabelField.text ?? "", newItem: itemTextField.text ?? "")
         navigationController?.popViewController(animated: true)
        }
     

@@ -260,3 +260,9 @@ extension FeedVC: updateTextDelegate {
     
     }
 }
+
+extension FeedVC: UpdateItemDelegate {
+    func UpdateItem(newTitle: String, newItem: String){
+    
+    }
+}
