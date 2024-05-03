@@ -43,8 +43,8 @@ class PostCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupPostImage()
         setupNameLabel()
+        setupPostImage()
         setupItemLabel()
         setupTimeLabel()
         setupLocationLabel()
@@ -167,9 +167,11 @@ class PostCollectionViewCell: UICollectionViewCell {
             postText.translatesAutoresizingMaskIntoConstraints = false
     
             NSLayoutConstraint.activate([
-                postText.leadingAnchor.constraint(equalTo: postText.leadingAnchor),
+                postText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+                postText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: padding),
+
                 postText.topAnchor.constraint(equalTo: postItem.bottomAnchor, constant: gap),
-                postText.heightAnchor.constraint(equalToConstant: 48)
+                postText.heightAnchor.constraint(equalToConstant: 50)
             ])
     
         }

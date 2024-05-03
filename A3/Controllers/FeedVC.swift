@@ -7,15 +7,38 @@
 
 import UIKit
 
-class FeedVC: UIViewController {
+class FeedVC: UIViewController{
+ 
 
     // MARK: - Properties (view)
 
     private var collectionView: UICollectionView!
     private let refreshControl = UIRefreshControl()
+    public let userButton = UIButton()
+    public let addItemButton = UIButton()
 
     // MARK: - Properties (data)
-    private var posts: [Post] = []
+    private var posts: [Post] = [
+        
+        Post(id: 1,
+             time: Date(),
+            title: "Found these AirPods",
+            item: "AirPods",
+            status: "Lost",
+            text: "I found these yesterday - message me if they are yours!",
+            location: "Morrison Dining Hall",
+             user_id: 1),
+        Post(id: 2,
+             time: Date(),
+            title: "Found these AirPods",
+            item: "AirPods",
+            status: "Lost",
+            text: "I found these yesterday - message me if they are you want them back",
+            location: "Morrison Dining Hall",
+            user_id: 1)
+    ]
+    private let buttonsize = CGFloat(20)
+    
 
     // MARK: - viewDidLoad
 
@@ -27,6 +50,9 @@ class FeedVC: UIViewController {
         view.backgroundColor = UIColor.a3.offWhite
         getPost()
         setupCollectionView()
+//        setupHomeButton()
+        setUpUserButton()
+        
        
     }
 
@@ -57,6 +83,7 @@ class FeedVC: UIViewController {
         layout.minimumInteritemSpacing = 16
         
         
+        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.reuse)
         
@@ -73,11 +100,85 @@ class FeedVC: UIViewController {
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 40),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
+    
+    func setUpHomeButton(){
+//        HomePageButton.setImage(UIImage(named:"home"), for: .normal)
+//        HomePageButton.backgroundColor = UIColor.a3.white
+//        HomePageButton.layer.cornerRadius = 4
+//        HomePageButton.setTitleColor(UIColor.a3.white, for: .normal)
+//        HomePageButton.addTarget(self, action: #selector(homeButtonTapped), for: .touchUpInside)
+//       
+//               contentView.addSubview(HomePageButton)
+//        HomePageButton.translatesAutoresizingMaskIntoConstraints = false
+//       
+//               NSLayoutConstraint.activate([
+//                HomePageButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: gap),
+//                HomePageButton.leadingAnchor.constraint(equalTo: postImage.leadingAnchor),
+//                HomePageButton.heightAnchor.constraint(equalToConstant: 24),
+//                HomePageButton.widthAnchor.constraint(equalToConstant: 24)
+//              ])
+    }
+    func setUpUserButton(){
+        
+        userButton.setImage(UIImage(named: "User"), for: .normal)
+        userButton.backgroundColor = UIColor.a3.white
+        userButton.layer.cornerRadius = 4
+        userButton.setTitleColor(UIColor.a3.white, for: .normal)
+        view.addSubview(userButton)
+        userButton.translatesAutoresizingMaskIntoConstraints = false
+        userButton.addTarget(self, action: #selector(userButtonTapped), for: .touchUpInside)
+        
+       NSLayoutConstraint.activate([
+        userButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        userButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+//        userButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        userButton.heightAnchor.constraint(equalToConstant: 50),
+        userButton.widthAnchor.constraint(equalToConstant: 50)
+      ])
+    }
+    
+    @objc private func userButtonTapped() {
+           // Implement your functionality when the "Edit Profile" button is tapped
+           // For example, you can navigate to the edit profile screen
+        let editProfileVC = UserProfileViewController(delegate: self)
+         navigationController?.pushViewController(editProfileVC, animated: true)
+       }
+    
+
+
+
+
+func setUpAddItemButton(){
+    
+    addItemButton.setImage(UIImage(named: "User"), for: .normal)
+    addItemButton.backgroundColor = UIColor.a3.white
+    addItemButton.layer.cornerRadius = 4
+    addItemButton.setTitleColor(UIColor.a3.white, for: .normal)
+    view.addSubview(addItemButton)
+    addItemButton.translatesAutoresizingMaskIntoConstraints = false
+    addItemButton.addTarget(self, action: #selector(addItemButtonTapped), for: .touchUpInside)
+    
+   NSLayoutConstraint.activate([
+    addItemButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    addItemButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+//        userButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+    addItemButton.heightAnchor.constraint(equalToConstant: 50),
+    addItemButton.widthAnchor.constraint(equalToConstant: 50)
+  ])
+}
+
+@objc private func addItemButtonTapped() {
+       // Implement your functionality when the "Edit Profile" button is tapped
+       // For example, you can navigate to the edit profile screen
+    let editItemVC = EditItemViewController(delegate: self)
+     navigationController?.pushViewController(editItemVC, animated: true)
+   }
+
 
 }
 
@@ -93,14 +194,7 @@ extension FeedVC: UICollectionViewDataSource {
         
         // TODO: Return the cells for each section
         // HINT: Use `indexPath.section` with an if statement
-        if indexPath.section == 0{
-            
-           
-                return UICollectionViewCell()
-            
-            
-        }
-        else{
+      
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionViewCell.reuse, for: indexPath) as? PostCollectionViewCell{
                 cell.configure(post: posts[indexPath.row])
                 return cell
@@ -108,7 +202,7 @@ extension FeedVC: UICollectionViewDataSource {
             else{
                 return UICollectionViewCell()
             }
-        }
+        
 
       
     }
@@ -116,9 +210,7 @@ extension FeedVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // TODO: Return the number of rows for each section
         // HINT: Use `section` with an if statement
-        if section == 0{
-            return 1
-        }
+        
         
         return posts.count // Replace this line
     }
@@ -126,15 +218,13 @@ extension FeedVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // TODO: Return the number of sections in this table view
         
-        return 2  // Replace this line
+        return 1  // Replace this line
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         // TODO: Return the inset for the spacing between the two sections
         
-        if section == 0{
-            return UIEdgeInsets(top: 8, left: 24, bottom: 8, right: 24)
-        }
+        
         return UIEdgeInsets(top: 16, left: 24, bottom: 0, right: 24) // Replace this line
     }
 
@@ -146,12 +236,9 @@ extension FeedVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if indexPath.section == 0 {
-            return CGSize(width: collectionView.frame.width, height: 131)
-        }
-        else{
-            return CGSize(width: collectionView.frame.width, height: 184)
-        }
+        
+        return CGSize(width: collectionView.frame.width, height: 184)
+        
         // TODO: Return the size for each cell per section
         // HINT: Use `indexPath.section` with an if statement
     
@@ -159,12 +246,17 @@ extension FeedVC: UICollectionViewDelegateFlowLayout {
 //        return CGSize() // Replace this line
     }
     
-    func didLikePostUpdate() {
-            // Refresh your data or collection view
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-            self.refreshControl.endRefreshing() // End refresh control
-        }
-        }
+//    func didLikePostUpdate() {
+//            // Refresh your data or collection view
+//        DispatchQueue.main.async {
+//            self.collectionView.reloadData()
+//            self.refreshControl.endRefreshing() // End refresh control
+//        }
+//        }
 
+}
+extension FeedVC: updateTextDelegate {
+    func updateText(newName: String, newEmail: String){
+    
+    }
 }

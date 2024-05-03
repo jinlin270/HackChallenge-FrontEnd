@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		200F3E002BC5943D00B011A9 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F3DFF2BC5943D00B011A9 /* PostCollectionViewCell.swift */; };
-		208791832BDF4D1100034480 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208791822BDF4D1100034480 /* MenuViewCell.swift */; };
+		207401A82BE4691C00174ED2 /* EditUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207401A72BE4691C00174ED2 /* EditUserProfileViewController.swift */; };
+		207401AA2BE4699B00174ED2 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207401A92BE4699B00174ED2 /* EditItemViewController.swift */; };
 		2E32E8592AF1AAF6005D5325 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E32E8582AF1AAF6005D5325 /* AppDelegate.swift */; };
 		2E32E85B2AF1AAF6005D5325 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E32E85A2AF1AAF6005D5325 /* SceneDelegate.swift */; };
 		2E32E8622AF1AAF7005D5325 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E32E8612AF1AAF7005D5325 /* Assets.xcassets */; };
@@ -23,7 +24,8 @@
 
 /* Begin PBXFileReference section */
 		200F3DFF2BC5943D00B011A9 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
-		208791822BDF4D1100034480 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
+		207401A72BE4691C00174ED2 /* EditUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileViewController.swift; sourceTree = "<group>"; };
+		207401A92BE4699B00174ED2 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		2E32E8552AF1AAF6005D5325 /* A3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E32E8582AF1AAF6005D5325 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E32E85A2AF1AAF6005D5325 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				2E32E86D2AF1AD85005D5325 /* FeedVC.swift */,
+				207401A72BE4691C00174ED2 /* EditUserProfileViewController.swift */,
+				207401A92BE4699B00174ED2 /* EditItemViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -111,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				200F3DFF2BC5943D00B011A9 /* PostCollectionViewCell.swift */,
-				208791822BDF4D1100034480 /* MenuViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,9 +206,10 @@
 				2E32E8712AF1ADA2005D5325 /* Date+Extension.swift in Sources */,
 				2E32E86E2AF1AD85005D5325 /* FeedVC.swift in Sources */,
 				2EC0B7CB2AF1B6C700F8F6F7 /* Post.swift in Sources */,
+				207401A82BE4691C00174ED2 /* EditUserProfileViewController.swift in Sources */,
+				207401AA2BE4699B00174ED2 /* EditItemViewController.swift in Sources */,
 				2E32E8732AF1ADC9005D5325 /* UIColor+Extension.swift in Sources */,
 				2E32E8792AF1AE3B005D5325 /* NetworkManager.swift in Sources */,
-				208791832BDF4D1100034480 /* MenuViewCell.swift in Sources */,
 				2E32E8592AF1AAF6005D5325 /* AppDelegate.swift in Sources */,
 				2E32E85B2AF1AAF6005D5325 /* SceneDelegate.swift in Sources */,
 				200F3E002BC5943D00B011A9 /* PostCollectionViewCell.swift in Sources */,
@@ -278,7 +282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -335,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -359,7 +363,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -367,6 +371,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinnie.A3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -387,7 +394,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -395,6 +402,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinnie.A3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
