@@ -52,6 +52,7 @@ class FeedVC: UIViewController{
         setupCollectionView()
 //        setupHomeButton()
         setUpUserButton()
+        setUpAddItemButton()
         
        
     }
@@ -155,7 +156,7 @@ class FeedVC: UIViewController{
 
 func setUpAddItemButton(){
     
-    addItemButton.setImage(UIImage(named: "User"), for: .normal)
+    addItemButton.setImage(UIImage(named: "+"), for: .normal)
     addItemButton.backgroundColor = UIColor.a3.white
     addItemButton.layer.cornerRadius = 4
     addItemButton.setTitleColor(UIColor.a3.white, for: .normal)
@@ -165,7 +166,7 @@ func setUpAddItemButton(){
     
    NSLayoutConstraint.activate([
     addItemButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-    addItemButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+    addItemButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
 //        userButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     addItemButton.heightAnchor.constraint(equalToConstant: 50),
     addItemButton.widthAnchor.constraint(equalToConstant: 50)
