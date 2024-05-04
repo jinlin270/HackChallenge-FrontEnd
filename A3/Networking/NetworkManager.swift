@@ -16,7 +16,7 @@ class NetworkManager {
     private init() { }
 
     /// Endpoint for dev server
-    private let devEndpoint: String = "https://chatdev-wuzwgwv35a-ue.a.run.app"
+    private let devEndpoint: String = "http://34.86.144.120/"
     
     // MARK: - Requests
     func getPost(completion: @escaping ([Post]) -> Void) {
