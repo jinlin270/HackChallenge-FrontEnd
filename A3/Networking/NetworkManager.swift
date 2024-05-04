@@ -44,7 +44,7 @@ class NetworkManager {
             }
     }
     
-    func addPost(message: String, completion: @escaping (Post) -> Void) {
+    func addPost(title: String, item: String, completion: @escaping (Post) -> Void) {
         // Specify the endpoint
 
         // Define the request body
@@ -55,7 +55,7 @@ class NetworkManager {
         // decoder.keyDecodingStrategy = .convertFromSnakeCase // Only if needed
 
         // Create the request
-        AF.request(devEndpoint+"/api/posts/create/", method: .post, parameters: ["message": message], encoding: JSONEncoding.default)
+        AF.request(devEndpoint+"/api/posts/create/", method: .post, parameters: [ "id": 10, "time": Date(), "title": title, "item": item, "status": "lost", "text": "", "location": "", "user_id": 0], encoding: JSONEncoding.default)
             .validate()
             .responseDecodable(of: Post.self, decoder: decoder) { response in
                 // Handle the response
@@ -69,72 +69,4 @@ class NetworkManager {
             }
     }
     
-    func likePost(post_id: String, completion: @escaping (Bool) -> Void) {
-        // Specify the endpoint
-
-        // Define the request body
-      let parameters = [
-        "post_id": post_id,
-        "net_id": "lj233"]
-        
-        // Create a decoder
-        let decoder = JSONDecoder()
-         decoder.dateDecodingStrategy = .iso8601 // Only if needed
-         decoder.keyDecodingStrategy = .convertFromSnakeCase // Only if needed
-        print(parameters)
-
-        // Create the request
-        AF.request(devEndpoint+"/api/posts/like/", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate()
-            .responseDecodable(of: Post.self, decoder: decoder) { response in
-                // Handle the response
-                switch response.result {
-                case .success(let post):
-                    print("Successfully liked post \(post)")
-                    completion(true)
-                case .failure(let error):
-                    if let statusCode = response.response?.statusCode, statusCode == 400 {
-                       print("You have already liked this post")
-                    } else {
-                        print("Error in NetworkManager.addPost: \(error.localizedDescription)")}
-                }
-            }
-    }
-    
-    
-    func unlikePost(post_id: String, completion: @escaping (Bool) -> Void) {
-        // Specify the endpoint
-
-        // Define the request body
-      let parameters = [
-        "post_id": post_id,
-        "net_id": "lj233"]
-        
-        // Create a decoder
-        let decoder = JSONDecoder()
-         decoder.dateDecodingStrategy = .iso8601 // Only if needed
-         decoder.keyDecodingStrategy = .convertFromSnakeCase // Only if needed
-        print(parameters)
-
-        // Create the request
-        AF.request(devEndpoint+"/api/posts/unlike/", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate()
-            .responseDecodable(of: Post.self, decoder: decoder) { response in
-                // Handle the response
-                switch response.result {
-                case .success(let post):
-                    print("Successfully unliked post \(post)")
-                    completion(true)
-                case .failure(let error):
-                    if let statusCode = response.response?.statusCode, statusCode == 400 {
-                       print("You did not like this post")
-                    } else {
-                        print("Error in NetworkManager.addPost: \(error.localizedDescription)")}
-                }
-            }
-    }
-
-
-
-
 }

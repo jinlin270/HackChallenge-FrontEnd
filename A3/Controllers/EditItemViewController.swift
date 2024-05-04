@@ -6,7 +6,7 @@
 //
 
 import UIKit
-    
+
 
 protocol UpdateItemDelegate: AnyObject {
     func UpdateItem(newTitle:String, newItem:String)
@@ -36,6 +36,7 @@ class EditItemViewController: UIViewController {
 //    private let majorLabel = UILabel()
     private let itemTextField = UITextField()
     private weak var delegate: UpdateItemDelegate?
+   
 
     // MARK: - Properties (data)
 
@@ -98,6 +99,14 @@ class EditItemViewController: UIViewController {
     @objc private func addItemButtonTapped() {
            // Implement your functionality when the "Edit Item" button is tapped
            // For example, you can navigate to the edit Item screen
+        
+        
+        NetworkManager.shared.addPost(title: self.titleText, item: self.itemText) { (post: Post) in
+            print("Post added successfully with title: \(post.title)")
+          
+        }
+
+        
          navigationController?.popViewController(animated: true)
        }
     
@@ -151,12 +160,12 @@ class EditItemViewController: UIViewController {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 19),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -32),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
         ])
     }
     
     private func setupItemImageView() {
-        ItemImageView.image = UIImage(named: "User")
+        ItemImageView.image = UIImage(named: "+")
         
         view.addSubview(ItemImageView)
         ItemImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -226,7 +235,7 @@ class EditItemViewController: UIViewController {
     
     private func setupitemLabel() {
         // 3. Configure the view's properties
-        itemLabel.text = "item"
+        itemLabel.text = "item name"
         itemLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         itemLabel.textColor = UIColor.black
         itemLabel.numberOfLines = 0

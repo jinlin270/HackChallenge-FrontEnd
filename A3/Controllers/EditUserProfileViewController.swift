@@ -90,6 +90,7 @@ class UserProfileViewController: UIViewController {
            // Implement your functionality when the "Edit Profile" button is tapped
            // For example, you can navigate to the edit profile screen
          navigationController?.popViewController(animated: true)
+        
        }
     
     public func setupSaveProfileButton() {
